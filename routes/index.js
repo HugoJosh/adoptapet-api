@@ -6,6 +6,8 @@ router.get('/', (req, res)=>{
 
 router.use('/usuarios', require('./usuario'));
 router.use('/mascotas', require('./mascota'));
+router.use('/solicitudes', require('./solicitud'));
+
 /* con el método use de nuestro router estamos indicando 
 * que en la ruta 'v1/usuarios' estarán anidadas las rutas 
 * que vamos a crear en nuestro archivo usuarios.js,

@@ -8,6 +8,8 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+require('./config/passport');
+
 // ESTE ES EL CÓDIGO A AGREGAR
 
 //Configurando las rutas

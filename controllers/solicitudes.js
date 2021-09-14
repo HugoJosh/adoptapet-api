@@ -15,8 +15,8 @@ function crearSolicitud(req, res, next) {
   // res.status(201).send(Mascot)
   var Solicitud = new Solicitud(req.body);
   Solicitud.save()
-    .then(function (Solicitud) {
-      res.status(200).send(Solicitud);
+    .then(function (Solicit) {
+      res.status(200).send(Solicit);
     })
     .catch(next);
 }

@@ -14,14 +14,14 @@
 
 //   module.exports = Solicitud;
 const mongoose = require('mongoose');
-const SolicitudSchema = new mongoose.Schema(
+const SolicitudScheme = new mongoose.Schema(
   {
     idUsuarioAnunciante: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Usuario",
       required: true,
     },
-    idUsuarioSolicitante: {
+    2: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Usuario",
       required: true,
@@ -36,7 +36,7 @@ const SolicitudSchema = new mongoose.Schema(
   { timestamps: true, collection: "Solicitudes" }
 );
 
-SolicitudSchema.methods.publicData = () => {
+SolicitudScheme.methods.publicData = () => {
   return {
     id: this.id,
     idUsuarioAnunciante: this.idUsuarioAnunciante,
@@ -45,4 +45,4 @@ SolicitudSchema.methods.publicData = () => {
     estado: this.estado
   };
 };
-mongoose.model("Solicitud", SolicitudSchema);
+mongoose.model("Solicitud", SolicitudScheme);

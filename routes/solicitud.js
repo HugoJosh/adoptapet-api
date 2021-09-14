@@ -6,9 +6,9 @@ const {
   modificarSolicitud,
   eliminarSolicitud,
   count
-} = require("../controllers/Solicitud");
+} = require("../controllers/solicitudes");
 
-router.get("/", obtenerSolicitud);
+router.get("/", obtenerSolicitudes);
 router.get("/:id", obtenerSolicitudes);
 router.get('/count/:id', count);
 router.post("/", crearSolicitud);
