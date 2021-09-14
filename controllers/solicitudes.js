@@ -87,9 +87,9 @@ function eliminarSolicitud(req, res) {
 }
 
 function count(req,res,next) {
-  var categoria = req.params.estado
+  var categoria = req.params.id
   Solicitud.aggregate([
-    {'$match': { 'estado': estado}}, 
+    {'$match': { '_id': id}}, 
     {'$count': 'total'}
   ]).then(r => {
     res.status(200).send(r)
