@@ -8,7 +8,6 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-require('./config/passport');
 
 // ESTE ES EL CÓDIGO A AGREGAR
 
@@ -18,31 +17,32 @@ require('./config/passport');
 const mongoose = require("mongoose");
 mongoose.connect(
   "mongodb+srv://introabd:introabd1234@cluster0.jso3y.mongodb.net/AdoptPet?retryWrites=true&w=majority"
-);
-mongoose.set("debug", true);
+  );
+  mongoose.set("debug", true);
+  
+  require("./models/Usuario");
+  require("./models/Mascota");
+  require("./models/Solicitud");
+  require('./config/passport');
+  
+  app.use("/v1", require("./routes"));
 
-require("./models/Usuario");
-require("./models/Mascota");
-require("./models/Solicitud");
-
-app.use("/v1", require("./routes"));
-
-const sequelize = new Sequelize("a", "superAdmin", "pass1234", {
-  host: "localhost:27017",
-  // una de estas opciones dependiendo el gestor de la base
-  dialect: "mysql",
-});
+// const sequelize = new Sequelize("a", "superAdmin", "pass1234", {
+//   host: "localhost:27017",
+//   // una de estas opciones dependiendo el gestor de la base
+//   dialect: "mysql",
+// });
 
 
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log("It's alive!!!!");
-  })
-  .catch((err) => {
-    console.log("No se conecto :(");
-  });
+// sequelize
+//   .authenticate()
+//   .then(() => {
+//     console.log("It's alive!!!!");
+//   })
+//   .catch((err) => {
+//     console.log("No se conecto :(");
+//   });
 
 const PORT = 4001;
 app.listen(PORT, () => {
