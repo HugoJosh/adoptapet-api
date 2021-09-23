@@ -15,10 +15,22 @@ app.use(bodyParser.json());
 
 //Configuracion de base de datos
 const mongoose = require("mongoose");
+// mongoose.connect(
+//   "mongodb+srv://introabd:introabd1234@cluster0.jso3y.mongodb.net/AdoptPet?retryWrites=true&w=majority"
+//   );
+//   mongoose.set("debug", true);
+const NODE_ENV='development'
+const PORT=4001
+const SECRET='secret' 
+const MONGODB_URI='mongodb+srv://introabd:introabd1234@cluster0.jso3y.mongodb.net/AdoptPet?retryWrites=true&w=majority'
+
+var isProduction = process.env.NODE_ENV === 'production';
+
 mongoose.connect(
-  "mongodb+srv://introabd:introabd1234@cluster0.jso3y.mongodb.net/AdoptPet?retryWrites=true&w=majority"
+  MONGODB_URI, // obtiene la url de conexión desde las variables de entorno
+  { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
   );
-  mongoose.set("debug", true);
+mongoose.set("debug", true);
   
   require("./models/Usuario");
   require("./models/Mascota");
@@ -44,7 +56,6 @@ mongoose.connect(
 //     console.log("No se conecto :(");
 //   });
 
-const PORT = 4001;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
