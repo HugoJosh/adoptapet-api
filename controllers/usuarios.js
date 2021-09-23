@@ -146,7 +146,8 @@ function crearUsuario(req, res, next) {
 }
 
 function obtenerUsuarios(req, res, next) {                              //Obteniendo usuario desde MongoDB.
-  Usuario.findById(req.params.id, (err, user) => {
+  var id = req.params.id;
+  Usuario.findById(id, (err, user) => {
     if (!user || err) {
       return res.sendStatus(401)
     }
