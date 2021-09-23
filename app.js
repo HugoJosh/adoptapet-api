@@ -19,12 +19,6 @@ const mongoose = require("mongoose");
 //   "mongodb+srv://introabd:introabd1234@cluster0.jso3y.mongodb.net/AdoptPet?retryWrites=true&w=majority"
 //   );
 //   mongoose.set("debug", true);
-const NODE_ENV='development'
-const PORT=4001
-const SECRET='secret' 
-const MONGODB_URI='mongodb+srv://introabd:introabd1234@cluster0.jso3y.mongodb.net/AdoptPet?retryWrites=true&w=majority'
-
-var isProduction = process.env.NODE_ENV === 'production';
 
 
 mongoose.connect(
