@@ -26,10 +26,12 @@ const MONGODB_URI='mongodb+srv://introabd:introabd1234@cluster0.jso3y.mongodb.ne
 
 var isProduction = process.env.NODE_ENV === 'production';
 
+
 mongoose.connect(
-  MONGODB_URI, // obtiene la url de conexión desde las variables de entorno
+  process.env.MONGODB_URI, // obtiene la url de conexión desde las variables de entorno
   { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
-  );
+);
+
 mongoose.set("debug", true);
   
   require("./models/Usuario");
@@ -56,9 +58,11 @@ mongoose.set("debug", true);
 //     console.log("No se conecto :(");
 //   });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+// Iniciando el servidor...
+var server = app.listen(process.env.PORT || 3000, function () {
+  console.log('Escuchando en el puerto ' + server.address().port);
 });
+
 
 // {name:1,email:1}
 // {name:1,text:1,date:1}
