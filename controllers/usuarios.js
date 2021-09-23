@@ -151,7 +151,7 @@ function obtenerUsuarios(req, res, next) {                              //Obteni
     if (!user || err) {
       return res.sendStatus(401)
     }
-    return res.send(user.publicData());
+    return res.send(user);
   }).catch(next);
 }
 
